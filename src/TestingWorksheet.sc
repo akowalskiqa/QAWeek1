@@ -58,6 +58,13 @@ def printAmount(a:String,b:Int): Unit ={
 }
 printAmount("Hi",3)
 
+def printAmountRec(a:String,b:Int): Unit ={
+  if(b>0){
+    println(a)
+  printAmountRec(a,b-1)}
+}
+printAmountRec("hi",3)
+
 def printRectangle(a:String,b:Int): Unit ={
   var output:String = ""
   for(i<-0 until b){
@@ -130,6 +137,8 @@ def reWriteConditional(a:Int,b:Int,c:Boolean): Int = {
     a*b
   }
 }
+
+
 
 
 
