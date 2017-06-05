@@ -123,20 +123,16 @@ def recursiveFizzBuzz(a:String,b:String,c:Int,d:Int): Unit={
 }
 
 
-def reWriteConditional(a:Int,b:Int,c:Boolean): Int = {
+def reWriteConditional(d:Int,b:Int,c:Boolean): Int = (d, b,c) match {
 
-  if(a==0){
-    b
-  }else if(b ==0){
-    a
-  }else if(a ==0 && b==0){
-    0
-  }else if(c){
-    a+b
-  }else{
-    a*b
-  }
+  case a if(a._1==0 && a._2==0) => 0
+  case a if(a._1==0) => b
+  case a if(a._2==0) => d
+  case a if(a._3==true) => d+b
+  case a if(a._3==false) => d*b
 }
+
+reWriteConditional(5,2,false)
 
 
 
