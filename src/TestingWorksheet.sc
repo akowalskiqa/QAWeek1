@@ -48,6 +48,7 @@ sumTwo(2,0,true)
 sumTwo(2,5,true)
 sumTwo(2,5,false)
 
+
 def printAmount(a:String,b:Int): Unit ={
 
     for(i<- 0 until b){
@@ -57,20 +58,78 @@ def printAmount(a:String,b:Int): Unit ={
 }
 printAmount("Hi",3)
 
-def fizzBuzz(a:String,b:String,c:Int):String ={
-  for(i<- 0 until c){
-    if((i%3)==0 && (i%5)==0){
-      a+b
-    }
-    else if((i%3)==0){
-      a
-    }else if((i%5)==0){
-      b}
+def printRectangle(a:String,b:Int): Unit ={
+  var output:String = ""
+  for(i<-0 until b){
+    output = output+a
   }
+  for(i<-0 until b){
+    println(output)
+  }
+}
+printRectangle("H",4)
+
+def printRectangleRecursive(a:String,b:Int): Unit ={
+  var finalText:String = ""
+  var c:Int = b
+  var d = b
+  while(d>0){
+    finalText = concatenate(finalText,a)
+    d-=1
+  }
+  while(c>0){
+    println(finalText)
+    c-=1
+  }
+}
+def concatenate(text:String,word:String): String ={
+  var output:String =text+word
+  output
+}
+printRectangleRecursive("H",6)
+
+def printAmountRecursive(a:String,b:Int): Unit ={
+  println(a)
+  if(b>0){
+  printAmountRecursive(a,b-1)}
+}
+printAmountRecursive("Hi",3);
+
+def fizzBuzz(a:String,b:String,c:Int): Unit= {
+  recursiveFizzBuzz(a,b,c,1)
 }
 fizzBuzz("Fizz","Buzz",15)
 
+def recursiveFizzBuzz(a:String,b:String,c:Int,d:Int): Unit={
+  if(d%3==0&&d%5==0){
+    println(a+b)
+  }else if(d%3==0){
+    println(a)
+  }else if(d%5==0){
+    println(b)
+  }else{
+    println(d)
+  }
+  if(d<c){
+    recursiveFizzBuzz(a,b,c,d+1);
+  }
+}
 
+
+def reWriteConditional(a:Int,b:Int,c:Boolean): Int = {
+
+  if(a==0){
+    b
+  }else if(b ==0){
+    a
+  }else if(a ==0 && b==0){
+    0
+  }else if(c){
+    a+b
+  }else{
+    a*b
+  }
+}
 
 
 
