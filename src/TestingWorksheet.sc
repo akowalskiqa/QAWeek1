@@ -135,7 +135,13 @@ def reWriteConditional(d:Int,b:Int,c:Boolean): Int = (d, b,c) match {
 reWriteConditional(5,2,false)
 
 
+def reOrganniseConditional(input:Array[Int],index:Int,): Unit = input match{
+  case a if(a.get(index)>a.get(index+1)) => reOrganiseConditional(input,index+1)
+}
 
+def checkBigger(a:Array[Int]): Unit ={
+
+}
 
 
 
