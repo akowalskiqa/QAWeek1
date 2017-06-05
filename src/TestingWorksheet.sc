@@ -28,18 +28,49 @@ def fourParameters(a:String,b:String,c:Char,d:Char) ={
   }
 print(fourParameters("Ha","llo",'a','e'))
 
-def sumTwo(a:Int,b:Int,c:Boolean){
-  var d: Int = 0
-  if(c==true){
-  d = a+b
+def sumTwo(a:Int,b:Int,c:Boolean): Int = {
 
-}else if(c ==false){
-  d = a*b
+  if(a==0){
+    b
+  }else if(b ==0){
+    a
+  }else if(a ==0 && b==0){
+    0
+  }else if(c){
+    a+b
+  }else{
+    a*b
+  }
 }
-  print(d)
+sumTwo(0,10,false)
+sumTwo(2,0,true)
+
+sumTwo(2,5,true)
+sumTwo(2,5,false)
+
+def printAmount(a:String,b:Int): Unit ={
+
+    for(i<- 0 until b){
+    println(a)
+      b-1
+  }
 }
-sumTwo(1,2,true)
-sumTwo(1,2,false)
+printAmount("Hi",3)
+
+def fizzBuzz(a:String,b:String,c:Int):String ={
+  for(i<- 0 until c){
+    if((i%3)==0 && (i%5)==0){
+      a+b
+    }
+    else if((i%3)==0){
+      a
+    }else if((i%5)==0){
+      b}
+  }
+}
+fizzBuzz("Fizz","Buzz",15)
+
+
 
 
 
