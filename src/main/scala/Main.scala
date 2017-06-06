@@ -6,16 +6,8 @@ object Main {
 
   def main(args: Array[String]) = {
 
-    println("Hello World!")
-
-    var a: String = "hello world from a";
-
-    println(a);
-//
+    var user1 = new Employee
+    user1.setID("123")
+    print(user1.getID())
   }
-
-  def printThis(name:String): Unit ={
-    println(name);
-  }
-
 }

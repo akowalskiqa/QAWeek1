@@ -3,4 +3,5 @@
   */
 class Car extends Vehicle {
 
+  setSeatAmount(5)
 }

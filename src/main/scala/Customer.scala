@@ -1,6 +1,6 @@
 /**
   * Created by Administrator on 06/06/2017.
   */
-class Customer {
+class Customer extends Person {
 
 }

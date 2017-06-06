@@ -148,11 +148,20 @@ reOrganniseConditional(Array(1,2,10,23,12,1,1))
 reOrganniseConditional(List(1,2))
 reOrganniseConditional((1,2))
 
+def functional(): Unit ={
+  var array1:Array[String] = java.util.TimeZone.getAvailableIDs().map(a =>a.split('/')).filter(_.length>1).map(a=>a(1)).grouped(50).map(a=>a(0)).toArray
+  array1.foreach(println)
+
+}
+functional()
+
+
+
 
 // Given 2 integer values greater than 0
 def blackjack(a:Int,b:Int): Unit ={
   if(a==21 && b ==21){
-    println(0)
+    println(21)
   }else if((a>b && a<22)||(b>21 && a<22)){
     println(a)
   }else if((b>a && b<22)||(a>21 && b<22)){
