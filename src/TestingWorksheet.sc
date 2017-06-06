@@ -182,6 +182,11 @@ uniqueSum(3,3,3)
 uniqueSum(1,1,2)
 
 def tooHot(temperature:Int,summer:Boolean): Boolean ={
-  if((temperature > 90|| temperature <60 )&& summer==false) false
-  if(temperature <=100)
+  if(summer == false&&(temperature >=60 && temperature <=90)){true}
+  else if(summer==true && (temperature <=100&& temperature >= 60)){true}
+  else false
 }
+tooHot(100,true)
+
+
+
