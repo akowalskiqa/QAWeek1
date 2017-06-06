@@ -149,23 +149,39 @@ reOrganniseConditional(List(1,2))
 reOrganniseConditional((1,2))
 
 
-
-
+// Given 2 integer values greater than 0
 def blackjack(a:Int,b:Int): Unit ={
-  if(a>21 && b >21){
+  if(a==21 && b ==21){
     println(0)
-  }else if(a>b&&a<22){
+  }else if((a>b && a<22)||(b>21 && a<22)){
     println(a)
-  }else if(b>a && b<22){
+  }else if((b>a && b<22)||(a>21 && b<22)){
     println(b)
-  }else if(a==b){
+  }else if(a==b && (a<22 && b<22)){
   println("draw")
-  }else if(a<22 && b>21){
-    println(a)
-  }else if(b<22&&a >21){
-  println(b)
+  }else{
+    println("both busted")
 }}
+blackjack(19,20)
 
+def uniqueSum(a:Int,b:Int,c:Int): Unit ={
+  var sum = 0
+  if((a!=b) && a!=c){
+    sum=a+sum
+  }
+  if((b!=a)&&(b!=c)){
+    sum= b+sum
+  }
+  if((c!=a)&&c!=b){
+    sum = c+sum
+  }
+  println(sum)
+}
+uniqueSum(1,2,3)
+uniqueSum(3,3,3)
+uniqueSum(1,1,2)
 
-
-
+def tooHot(temperature:Int,summer:Boolean): Boolean ={
+  if((temperature > 90|| temperature <60 )&& summer==false) false
+  if(temperature <=100)
+}
