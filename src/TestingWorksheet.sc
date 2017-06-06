@@ -130,18 +130,41 @@ def reWriteConditional(d:Int,b:Int,c:Boolean): Int = (d, b,c) match {
   case a if(a._2==0) => d
   case a if(a._3==true) => d+b
   case a if(a._3==false) => d*b
+  case _ => 0
 }
 
 reWriteConditional(5,2,false)
 
 
-def reOrganniseConditional(input:Array[Int],index:Int,): Unit = input match{
-  case a if(a.get(index)>a.get(index+1)) => reOrganiseConditional(input,index+1)
+def reOrganniseConditional(input:Any)=input match{
+
+    case item: Array[Int] =>  Array(item(1),item(0))
+    case item: List[Any] => List(item(1),item(0))
+    case (x,y) =>(y,x)
+    case _ =>
 }
 
-def checkBigger(a:Array[Int]): Unit ={
+reOrganniseConditional(Array(1,2,10,23,12,1,1))
+reOrganniseConditional(List(1,2))
+reOrganniseConditional((1,2))
 
-}
+
+
+
+def blackjack(a:Int,b:Int): Unit ={
+  if(a>21 && b >21){
+    println(0)
+  }else if(a>b&&a<22){
+    println(a)
+  }else if(b>a && b<22){
+    println(b)
+  }else if(a==b){
+  println("draw")
+  }else if(a<22 && b>21){
+    println(a)
+  }else if(b<22&&a >21){
+  println(b)
+}}
 
 
 
