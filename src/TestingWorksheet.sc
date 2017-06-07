@@ -196,6 +196,3 @@ def tooHot(temperature:Int,summer:Boolean): Boolean ={
   else false
 }
 tooHot(100,true)
-
-
-
