@@ -122,6 +122,16 @@ def recursiveFizzBuzz(a:String,b:String,c:Int,d:Int): Unit={
   }
 }
 
+def fizzBuzzAttempt2(a:String,b:String,d:Int): Unit ={
+  (1 to d).foreach(item=> println(if(item%3==0 && item%5==0){a+b}else if(item%3==0){a}else if(item%5==0){b}else{item}))
+}
+fizzBuzzAttempt2("Fizz","Buzz",20)
+
+def fizzBuzzMap(a:String,b:String,d:Int):Unit={
+  (1 to d).map(item=> if(item%3==0 && item%5==0){a+b}else if(item%3==0){a}else if(item%5==0){b}else{item} ).foreach(item=>println(item))
+}
+fizzBuzzMap("Fizz","Buzz",20)
+
 
 def reWriteConditional(d:Int,b:Int,c:Boolean): Int = (d, b,c) match {
 
@@ -173,6 +183,12 @@ def blackjack(a:Int,b:Int): Unit ={
 }}
 blackjack(19,20)
 
+def blackjackImproved(a:Int,b:Int): Unit ={
+  var collectionResult = List(a,b,0).filter(_<22).sorted.reverse
+  println(collectionResult(0))
+}
+blackjackImproved(17,21)
+
 def uniqueSum(a:Int,b:Int,c:Int): Unit ={
   var sum = 0
   if((a!=b) && a!=c){
@@ -190,9 +206,20 @@ uniqueSum(1,2,3)
 uniqueSum(3,3,3)
 uniqueSum(1,1,2)
 
+import scala.collection.mutable.ListBuffer
+def uniqueSumNew(a:Array[Int]): Unit ={
+  println(a.distinct.sum)
+ // var container = new ListBuffer[Int]()
+ // a.foreach(item=> if(container.contains(item)){}else{container+=item})
+ // container.toList
+ // println(container.sum)
+}
+uniqueSumNew(Array[Int](2,4,4,3))
+
 def tooHot(temperature:Int,summer:Boolean): Boolean ={
   if(summer == false&&(temperature >=60 && temperature <=90)){true}
   else if(summer==true && (temperature <=100&& temperature >= 60)){true}
   else false
 }
 tooHot(100,true)
+
