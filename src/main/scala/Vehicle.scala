@@ -4,9 +4,9 @@
 abstract class Vehicle(var vehicleId: Int, var seatCount: Int) {
 
 
-  def setVehicleID(newIDNumber:Int): Unit ={iD = newIDNumber}
-  def setSeatAmount(newSeatAmount:Int): Unit=(seats=newSeatAmount)
-  def getVehicleID():Unit={iD}
-  def getSeatAmount():Unit={seats}
+  def setVehicleID(newIDNumber:Int): Unit ={vehicleId = newIDNumber}
+  def setSeatAmount(newSeatAmount:Int): Unit=(seatCount=newSeatAmount)
+  def getVehicleID():Int={vehicleId}
+  def getSeatAmount():Int={vehicleId}
 
 }
