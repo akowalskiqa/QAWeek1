@@ -7,4 +7,10 @@ class Employee (id:Int,name:String,var title:String) extends Person(id,name) {
   def setTitle(newTitle:String): Unit ={title = newTitle}
   def getTitle(): String ={title}
 
+  def turnBusy(busyDuration:Int): Unit ={
+    busy = true
+    Thread.sleep(busyDuration)
+    busy = false
+  }
+
 }

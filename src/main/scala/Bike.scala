@@ -3,7 +3,9 @@ import com.sun.xml.internal.ws.api.server.AbstractServerAsyncTransport
 /**
   * Created by Administrator on 06/06/2017.
   */
-class Bike(id: Int,count: Int,owner:Person) extends Vehicle(id ,count,owner ) {
+class Bike(id: Int,seatCount: Int,owner:Person) extends Vehicle(id ,seatCount,owner ) {
   val numberOfParts:Int = 2+ r.nextInt(15) // easier to process with smaller range
-  setSeatAmount(2)
+  for(i<-0 to numberOfParts){
+    vehicleParts+= new Part()
+  }
 }

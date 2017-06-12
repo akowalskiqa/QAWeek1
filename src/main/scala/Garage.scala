@@ -4,18 +4,33 @@
 import scala.collection.mutable.{ListBuffer}
 class Garage {
 
-  var openStatus:Boolean = true
+  var openStatus:Boolean = false
   var customerPaymentDue:Map[Int,Int] = Map()
   var listOfCars = ListBuffer[Vehicle]()
   var listOfPeopleInGarage = ListBuffer[Person]()
- // var personToVehicleMapCollection:Map[Person,List[Vehicle]] = Map()
-  var registeredEmployees = ListBuffer[Employee]()
+  var registeredEmployees = ListBuffer[Employee]() // redundant but left it because of the criteria, perhaps only for printing all the registered employees within garage thats all
+  var nonBusyEmployees = ListBuffer[Employee]()
 
+
+  // var personToVehicleMapCollection:Map[Person,List[Vehicle]] = Map()
   //var personToVehicleMapCollection:Map[Person,Option[Vehicle]] = Map()
 
 
+def startFixing(): Unit ={
+  while(nonBusyEmployees.length>0){
 
 
+
+    listOfCars.foreach(car=> if(car.vehicleParts.foreach(part=>if(part.broken==true){}){fixVehicle(car,nonBusyEmployees(0))}))
+  }
+}
+
+def appointEmployeeToFix(vehicleToBeFixed:Vehicle): Boolean ={
+    if(nonBusyEmployees.length>0){
+      fixVehicle(vehicleToBeFixed,nonBusyEmployees(0));true
+    }
+  false
+}
 
 
 
@@ -31,10 +46,10 @@ class Garage {
  //   }
  // }
 
-  def addVehicle(owner:Person,addThis:Vehicle): Unit ={
+  def addVehicle(addThis:Vehicle): Unit ={
   //  print(addThis.getVehicleID())
     listOfCars+=addThis
-    listOfPeopleInGarage+=owner
+    //listOfPeopleInGarage+=owner
   }
   def removeVehicleByID(id:Int): Unit ={
     listOfCars.foreach(item=> if(item.getVehicleID()==id){listOfCars-=item})
@@ -60,16 +75,20 @@ class Garage {
     openStatus = false
   }
 
-  def fixVehicle(vehicleToBeFixed:Vehicle): Unit ={
-    var amountToPay:Int = 50
-  //  if(vehicleToBeFixed.vehicleParts.contains(true)){
+  def fixVehicle(vehicleToBeFixed:Vehicle,assignedEmployee:Employee): Unit ={
+    var amountToPay:Int = 0
+    var howManyPartsAreBroken = 0
+    var timeToFix = 0;
       val customerID:Int = vehicleToBeFixed.getVehicleOwner().getID()
-      vehicleToBeFixed.vehicleParts.foreach(item => if(item.broken == true){amountToPay+=100;item.broken = false})
+      vehicleToBeFixed.vehicleParts.foreach(item => if(item.broken == true){amountToPay+=item.price;howManyPartsAreBroken+=1;timeToFix+=item.timeToFix;item.broken = false})
+      println("Employee "+assignedEmployee.getID()+" : "+ assignedEmployee.getName()+" is fixing car ID: "+ vehicleToBeFixed.getVehicleID()+", it will take him "+timeToFix+"s to fix the broken parts")
+      assignedEmployee.turnBusy(timeToFix)// its fine to just put him to sleep here
       if(customerPaymentDue.contains(customerID)){amountToPay += customerPaymentDue(customerID)}
       customerPaymentDue += (customerID -> amountToPay)
-      println(customerID + " needs to pay " + amountToPay+ " " +customerPaymentDue(customerID))
-   // }
+      println("Customer ID: "+customerID+" needs to pay " +amountToPay+" For "+howManyPartsAreBroken+" being fixed, overall for all car fixes he is due: "+customerPaymentDue(customerID))
   }
+
+
 
 //  def removeVehicleByType(inputType:String): Unit ={
 //    val inputChangeType = Class.forName(inputType)
