@@ -4,5 +4,5 @@
 abstract class Person(val id:Int, val name:String) {
 
   //def setID(newID:Int): Unit ={id = newID}
-  def getID():Any={id}
+  def getID():Int={id}
 }

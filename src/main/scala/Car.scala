@@ -3,6 +3,8 @@
   */
 class Car(id: Int,count: Int,owner:Person) extends Vehicle(id,count,owner) {
   val numberOfParts:Int = 10+ r.nextInt(30) // easier to process with smaller range
-
+  for(i<-0 to numberOfParts){
+    vehicleParts+= new Part()
+  }
   setSeatAmount(5)
 }

@@ -5,16 +5,23 @@ import scala.collection.mutable.{ListBuffer}
 class Garage {
 
   var openStatus:Boolean = true
-
+  var customerPaymentDue:Map[Int,Int] = Map()
   var listOfCars = ListBuffer[Vehicle]()
   var listOfPeopleInGarage = ListBuffer[Person]()
-  //var personToVehicleMapCollection:Map[Person,Option[Vehicle]] = Map()
-  var personToVehicleMapCollection:Map[Person,List[Vehicle]] = Map()
+ // var personToVehicleMapCollection:Map[Person,List[Vehicle]] = Map()
   var registeredEmployees = ListBuffer[Employee]()
 
-  def addToMapPersonVehicleRelation(addThisPerson:Person,vehicleCollection:List[Vehicle]): Unit ={
-      personToVehicleMapCollection+=(addThisPerson->vehicleCollection)
-  }
+  //var personToVehicleMapCollection:Map[Person,Option[Vehicle]] = Map()
+
+
+
+
+
+
+
+//  def addToMapPersonVehicleRelation(addThisPerson:Person,vehicleCollection:List[Vehicle]): Unit ={
+//      personToVehicleMapCollection+=(addThisPerson->vehicleCollection)
+ // }
 
 
  // def addIndividualToGarageCollection(addThisPerson:Person,car:Option[Vehicle]): Unit ={
@@ -54,7 +61,14 @@ class Garage {
   }
 
   def fixVehicle(vehicleToBeFixed:Vehicle): Unit ={
-
+    var amountToPay:Int = 50
+  //  if(vehicleToBeFixed.vehicleParts.contains(true)){
+      val customerID:Int = vehicleToBeFixed.getVehicleOwner().getID()
+      vehicleToBeFixed.vehicleParts.foreach(item => if(item.broken == true){amountToPay+=100;item.broken = false})
+      if(customerPaymentDue.contains(customerID)){amountToPay += customerPaymentDue(customerID)}
+      customerPaymentDue += (customerID -> amountToPay)
+      println(customerID + " needs to pay " + amountToPay+ " " +customerPaymentDue(customerID))
+   // }
   }
 
 //  def removeVehicleByType(inputType:String): Unit ={
