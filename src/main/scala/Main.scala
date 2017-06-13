@@ -31,10 +31,12 @@ object Main {
     var garage = new Garage()
 
     garage.registeredEmployees+= (employee1,employee2,employee3,employee4)
+    garage.nonBusyEmployees+= (employee1,employee2,employee3,employee4)
     garage.openGarage()
     garage.addVehicle(ride1);garage.addVehicle(ride2);garage.addVehicle(ride3);garage.addVehicle(ride4);garage.addVehicle(ride5);garage.addVehicle(ride6);garage.addVehicle(ride7);garage.addVehicle(ride8);garage.addVehicle(ride9);garage.addVehicle(ride10);garage.addVehicle(ride11)
 
-    garage.fixVehicle(ride1,employee1)
+    garage.startFixing()
+   // garage.fixVehicle(ride1,employee1)
 
 
 

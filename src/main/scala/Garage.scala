@@ -2,6 +2,7 @@
   * Created by Administrator on 09/06/2017.
   */
 import scala.collection.mutable.{ListBuffer}
+import scala.concurrent.Future
 class Garage {
 
   var openStatus:Boolean = false
@@ -9,27 +10,34 @@ class Garage {
   var listOfCars = ListBuffer[Vehicle]()
   var listOfPeopleInGarage = ListBuffer[Person]()
   var registeredEmployees = ListBuffer[Employee]() // redundant but left it because of the criteria, perhaps only for printing all the registered employees within garage thats all
-  var nonBusyEmployees = ListBuffer[Employee]()
+  var nonBusyEmployees = ListBuffer[Employee]() // should in real life only contain available engineers
 
 
   // var personToVehicleMapCollection:Map[Person,List[Vehicle]] = Map()
   //var personToVehicleMapCollection:Map[Person,Option[Vehicle]] = Map()
 
-
+//should correspond to criteria, if more robust is required should only need minor changes
 def startFixing(): Unit ={
-  while(nonBusyEmployees.length>0){
-
-
-
-    listOfCars.foreach(car=> if(car.vehicleParts.foreach(part=>if(part.broken==true){}){fixVehicle(car,nonBusyEmployees(0))}))
+  var timeForAllVehiclesToBeFixed = 0
+  listOfCars.foreach(car=> car.vehicleParts.foreach(part=> timeForAllVehiclesToBeFixed+= part.timeToFix))
+  println(s"It should take $timeForAllVehiclesToBeFixed ~ for all cars to be fixed")
+  fixList()
+  var totalIncomeForThisDay =0
+  customerPaymentDue.foreach {
+    case(customerId, amountToPay) => totalIncomeForThisDay+=amountToPay
+    case _ =>
   }
+  println(s"Total income for the day is: $totalIncomeForThisDay")
 }
 
-def appointEmployeeToFix(vehicleToBeFixed:Vehicle): Boolean ={
-    if(nonBusyEmployees.length>0){
-      fixVehicle(vehicleToBeFixed,nonBusyEmployees(0));true
-    }
-  false
+def fixList(): Unit ={
+  while(nonBusyEmployees.length>0&&listOfCars.length >0){
+    println(nonBusyEmployees.length)
+    listOfCars(0).vehicleParts.foreach(part=> if(part.broken==true){fixVehicle(listOfCars(0),nonBusyEmployees(0))})
+    listOfCars-=listOfCars(0)
+    nonBusyEmployees-=nonBusyEmployees(0)
+  }
+  if(listOfCars.length >0){Thread.sleep(300);fixList()}
 }
 
 
@@ -85,7 +93,8 @@ def appointEmployeeToFix(vehicleToBeFixed:Vehicle): Boolean ={
       assignedEmployee.turnBusy(timeToFix)// its fine to just put him to sleep here
       if(customerPaymentDue.contains(customerID)){amountToPay += customerPaymentDue(customerID)}
       customerPaymentDue += (customerID -> amountToPay)
-      println("Customer ID: "+customerID+" needs to pay " +amountToPay+" For "+howManyPartsAreBroken+" being fixed, overall for all car fixes he is due: "+customerPaymentDue(customerID))
+      println(s"Customer ID: $customerID needs to pay  $amountToPay For $howManyPartsAreBroken parts being fixed. Overall customer ID: $customerID for all car fixes he is due: "+customerPaymentDue(customerID))
+    nonBusyEmployees+=assignedEmployee
   }
 
 
