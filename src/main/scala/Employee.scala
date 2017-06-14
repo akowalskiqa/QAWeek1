@@ -9,7 +9,7 @@ class Employee (id:Int,name:String,var title:String) extends Person(id,name) {
 
   def turnBusy(busyDuration:Int): Unit ={
     busy = true
-    Thread.sleep(2000)
+    Thread.sleep(busyDuration)
     busy = false
   }
 
