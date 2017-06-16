@@ -6,4 +6,5 @@ class Car(id: Int,seatCount: Int,owner:Person) extends Vehicle(id,seatCount,owne
   for(i<-0 to numberOfParts){
     vehicleParts+= new Part()
   }
+  override def toString: String = super.toString + (s"this car has $numberOfParts parts")
 }

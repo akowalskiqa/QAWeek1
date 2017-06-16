@@ -6,4 +6,6 @@ class Part {
   val r: scala.util.Random = scala.util.Random
   var timeToFix:Int = if(broken == true){r.nextInt(120)}else{0}
   val price:Int = r.nextInt(250)
+
+  override def toString: String = (s"Part is this part broken? $broken, estimated time to fix: $timeToFix, part price: $price ")
 }

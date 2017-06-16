@@ -1,5 +1,3 @@
-import com.sun.xml.internal.ws.api.server.AbstractServerAsyncTransport
-
 /**
   * Created by Administrator on 06/06/2017.
   */
@@ -8,4 +6,5 @@ class Bike(id: Int,seatCount: Int,owner:Person) extends Vehicle(id ,seatCount,ow
   for(i<-0 to numberOfParts){
     vehicleParts+= new Part()
   }
+  override def toString: String = super.toString + (s"this bike has $numberOfParts parts")
 }
