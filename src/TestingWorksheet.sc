@@ -95,6 +95,9 @@ def concatenate(text:String,word:String): String ={
 }
 printRectangleRecursive("H",6)
 
+
+///asdasdashgdasdga
+
 def printAmountRecursive(a:String,b:Int): Unit ={
   println(a)
   if(b>0){
